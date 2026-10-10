@@ -6,7 +6,7 @@ export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "66px 82px", color: "#f4f0e8", background: "linear-gradient(105deg, rgba(18,34,26,.94), rgba(30,50,38,.52)), url(https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1600&q=85) center 42% / cover" }}>
+    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "66px 82px", color: "#f4f0e8", background: "linear-gradient(105deg, rgba(18,34,26,.94), rgba(30,50,38,.52)), center 42% / cover" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 19, letterSpacing: 5 }}>
         NIA <span style={{ color: "#d7a94e" }}>✳</span> BY NEETHU
       </div>
