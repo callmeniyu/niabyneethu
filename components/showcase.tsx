@@ -9,11 +9,7 @@ const IG = "https://www.instagram.com/nia_by_neethu/";
 
 const images = {
   hero: "/images/hero1.png",
-  saree: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
-  kurta: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1200&q=85",
   texture: "images/bg3.jpg",
-  editorial: "https://images.unsplash.com/photo-1583391733956-6c78276477e4?auto=format&fit=crop&w=1800&q=85",
-  details: "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=1200&q=85",
 };
 
 const categories = [
@@ -23,9 +19,9 @@ const categories = [
 ];
 
 const reels = [
-  { number: "01", name: "The Sunday drape", image: images.saree, file: "/videos/video1.mp4" },
-  { number: "02", name: "A little colour", image: images.kurta, file: "/videos/video2.mp4" },
-  { number: "03", name: "Made to move", image: images.details, file: "/videos/video4.mp4" },
+  { number: "01", name: "The Sunday drape", file: "/videos/video1.mp4" },
+  { number: "02", name: "A little colour", file: "/videos/video2.mp4" },
+  { number: "03", name: "Made to move", file: "/videos/video4.mp4" },
 ];
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -159,7 +155,7 @@ export default function Showcase() {
       </section>
 
       <section className="film-section" aria-label="A moving portrait of Nia by Neethu">
-        <video className="film-video" autoPlay={!reduceMotion} muted loop playsInline preload="metadata" poster={images.editorial} aria-label="A woman in a traditional saree">
+        <video className="film-video" autoPlay={!reduceMotion} muted loop playsInline preload="metadata" aria-label="A woman in a traditional saree">
           <source src="/videos/bg_video.mp4" type="video/mp4" />
         </video>
         <div className="film-overlay" />
@@ -239,7 +235,7 @@ export default function Showcase() {
           {reels.map((reel, index) => (
             <Reveal className={`reel-card reel-card--${index + 1}`} key={reel.number} delay={index * 0.1}>
               <div className="reel-frame">
-                <video autoPlay={!reduceMotion} muted loop playsInline preload="none" poster={reel.image} aria-label={`Product film: ${reel.name}`}>
+                <video autoPlay={!reduceMotion} muted loop playsInline preload="none" aria-label={`Product film: ${reel.name}`}>
                   <source src={reel.file} type="video/mp4" />
                 </video>
                 <span className="reel-number">NIA FILM&nbsp; / &nbsp;{reel.number}</span>
