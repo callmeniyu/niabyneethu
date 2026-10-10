@@ -194,7 +194,7 @@ section[class*="feed"] *,
 }
 @media (max-width: 640px) {
   .hero-image {
-    background-image: url("/images/hero1.png");
+    background-image: url("../public/images/hero1.png");
     background-size: cover, cover;
     background-position:
       56% center,

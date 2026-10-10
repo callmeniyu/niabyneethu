@@ -8,8 +8,8 @@ const DM = "https://ig.me/m/nia_by_neethu";
 const IG = "https://www.instagram.com/nia_by_neethu/";
 
 const images = {
-  hero: "/images/hero1.png",
-  texture: "images/bg3.jpg",
+  hero: "./images/hero1.png",
+  texture: "../public/images/bg3.jpg",
 };
 
 const categories = [
@@ -91,7 +91,9 @@ export default function Showcase() {
       </header>
 
       <section className="hero" id="top" ref={heroRef} aria-label="Nia by Neethu — made for the way you feel">
-        <motion.div className="hero-image" style={{ y: heroImageY, backgroundImage: `url('${images.hero}.')` }} />
+        <motion.div className="hero-image" style={{ y: heroImageY }} />
+        {/* <img src="../public/images/hero1.png" alt="Nia by Neethu — made for the way you feel" /> */}
+
         <div className="hero-grain" />
         <motion.div className="hero-copy" style={{ y: heroTextY }}>
           <motion.p className="hero-kicker" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 0.8 }}>
