@@ -1,0 +1,264 @@
+/* Brand-owned art direction: landscape for desktop, portrait framing for mobile. */
+main {
+  display: flex;
+  flex-direction: column;
+}
+.film-section {
+  order: 2;
+}
+.wardrobe-section {
+  order: 3;
+}
+.watch-section {
+  order: 4;
+}
+.quote-section {
+  order: 5;
+}
+.nia-notes-section {
+  order: 6;
+}
+.moving-note {
+  order: 7;
+}
+.closing-section {
+  order: 8;
+}
+.site-footer {
+  order: 9;
+}
+.hero-image {
+  background-image: url("/images/hero2.png"), url("https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=2200&q=90") !important;
+  background-size: cover, cover;
+  background-position:
+    center 25%,
+    center 25%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.watch-section {
+  padding: 112px 10.5vw 95px;
+  background: #eae5db;
+}
+.watch-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 44px;
+}
+.watch-heading h2,
+.nia-notes-title h2 {
+  margin: 25px 0 0;
+  font: 400 clamp(55px, 7vw, 92px)/0.88 var(--serif);
+  letter-spacing: -0.045em;
+}
+.watch-heading h2 em,
+.nia-notes-title h2 em {
+  color: var(--rose);
+}
+.watch-heading > p {
+  max-width: 275px;
+  margin: 0 2.5% 5px 0;
+  color: #697069;
+  font-size: 11px;
+  line-height: 1.85;
+}
+.watch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+.watch-card {
+  min-width: 0;
+}
+.watch-video-link {
+  display: block;
+  position: relative;
+  aspect-ratio: 0.65;
+  overflow: hidden;
+  background: #c7bca8;
+}
+.watch-video-link::after {
+  position: absolute;
+  content: "";
+  inset: 35% 0 0;
+  background: linear-gradient(transparent, rgba(16, 28, 21, 0.36));
+  pointer-events: none;
+}
+.watch-video-link video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+}
+.watch-playmark {
+  position: absolute;
+  z-index: 1;
+  left: 13px;
+  bottom: 14px;
+  color: white;
+  font-size: 8px;
+  letter-spacing: 0.17em;
+}
+.watch-card-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 13px;
+  font-size: 9px;
+}
+.watch-card-caption > span {
+  color: #73786f;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+}
+.watch-card-caption a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.watch-footnote {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(23, 37, 30, 0.16);
+  color: #73786f;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+.nia-notes-section {
+  padding: 110px 10.5vw 118px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 10%;
+  align-items: start;
+}
+.nia-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 30px;
+  padding-top: 6px;
+}
+.nia-notes-grid article {
+  border-top: 1px solid rgba(23, 37, 30, 0.22);
+  padding-top: 15px;
+}
+.nia-notes-grid article:first-child {
+  grid-column: 1 / -1;
+}
+.nia-notes-grid article > span {
+  font-size: 8px;
+  color: var(--rose);
+  letter-spacing: 0.15em;
+}
+.nia-notes-grid h3 {
+  margin: 15px 0 7px;
+  font: 400 29px/1 var(--serif);
+}
+.nia-notes-grid p {
+  max-width: 260px;
+  margin: 0;
+  color: #697069;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* Keep the feed copy readable if its section uses a light paper background. */
+section[id*="feed"],
+section[class*="feed"],
+#feed,
+.feed-section,
+.nia-feed-section {
+  color: var(--ink) !important;
+}
+section[id*="feed"] *,
+section[class*="feed"] *,
+#feed *,
+.feed-section *,
+.nia-feed-section * {
+  color: var(--ink) !important;
+}
+
+@media (max-width: 850px) {
+  .watch-section {
+    padding: 90px 6vw 80px;
+  }
+  .watch-grid {
+    gap: 12px;
+  }
+  .nia-notes-section {
+    padding: 90px 7vw;
+    gap: 6%;
+  }
+}
+@media (max-width: 640px) {
+  .hero-image {
+    background-image: url("/images/hero1.png"), url("https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85") !important;
+    background-size: cover, cover;
+    background-position:
+      56% center,
+      56% center;
+    background-repeat: no-repeat, no-repeat;
+  }
+  .quote-photo {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: auto;
+  }
+  .quote-photo img {
+    position: relative;
+    inset: auto;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .watch-section {
+    padding: 76px 7vw 72px;
+  }
+  .watch-heading {
+    display: block;
+    margin-bottom: 29px;
+  }
+  .watch-heading h2 {
+    font-size: clamp(58px, 11vw, 76px);
+  }
+  .watch-heading > p {
+    margin: 19px 0 0 auto;
+    max-width: 285px;
+  }
+  .watch-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 26px 13px;
+  }
+  .watch-video-link {
+    aspect-ratio: 0.68;
+  }
+  .watch-card-caption {
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 8px;
+  }
+  .watch-footnote {
+    font-size: 8px;
+    line-height: 1.6;
+  }
+  .nia-notes-section {
+    display: block;
+    padding: 76px 7vw 88px;
+  }
+  .nia-notes-title h2 {
+    font-size: clamp(56px, 11vw, 76px);
+    margin-bottom: 34px;
+  }
+  .nia-notes-grid {
+    gap: 23px 18px;
+  }
+  .nia-notes-grid h3 {
+    font-size: 24px;
+  }
+  .nia-notes-grid p {
+    font-size: 9px;
+  }
+}
