@@ -27,13 +27,15 @@ main {
 .site-footer {
   order: 9;
 }
-.hero-image {
-  background-image: url("/images/hero2.png");
-  background-size: cover, cover;
-  background-position:
-    center 25%,
-    center 25%;
-  background-repeat: no-repeat, no-repeat;
+.hero-img {
+  object-fit: cover;
+  object-position: center 25%;
+}
+.hero-img-mobile {
+  display: none !important;
+}
+.hero-img-desktop {
+  display: block !important;
 }
 
 .watch-section {
@@ -193,13 +195,14 @@ section[class*="feed"] *,
   }
 }
 @media (max-width: 640px) {
-  .hero-image {
-    background-image: url("../public/images/hero1.png");
-    background-size: cover, cover;
-    background-position:
-      56% center,
-      56% center;
-    background-repeat: no-repeat, no-repeat;
+  .hero-img-mobile {
+    display: block !important;
+  }
+  .hero-img-desktop {
+    display: none !important;
+  }
+  .hero-img {
+    object-position: 56% center;
   }
   .quote-photo {
     min-height: 0;
