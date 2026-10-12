@@ -8,7 +8,7 @@ A motion-led, single-page Next.js showcase built from the existing Nia by Neethu
 2. From this folder run `npm install` and then `npm run dev`.
 3. Open the local address printed by Next.js.
 
-## Before launch
+## Before
 
 - Replace the Unsplash images and Pexels video in `components/showcase.tsx` with Nia-owned campaign imagery and an approved short film. Confirm that you have permission to use every image and video.
 - To populate “Watch & buy”, place the three Instagram reel videos as MP4 files at `public/videos/nia-reel-01.mp4`, `public/videos/nia-reel-02.mp4`, and `public/videos/nia-reel-03.mp4`, in the same order as the three reel links shared in the project brief. The cards use local, muted, looping video and keep visitors on the page. Instagram itself does not provide a reliable, unbranded autoplay player for this use.
