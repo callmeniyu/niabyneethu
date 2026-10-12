@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Instagram, Menu, X } from "lucide-react";
 
@@ -91,8 +92,24 @@ export default function Showcase() {
       </header>
 
       <section className="hero" id="top" ref={heroRef} aria-label="Nia by Neethu — made for the way you feel">
-        <motion.div className="hero-image" style={{ y: heroImageY }} />
-        {/* <img src="../public/images/hero1.png" alt="Nia by Neethu — made for the way you feel" /> */}
+        <motion.div className="hero-image" style={{ y: heroImageY }}>
+          <Image
+            src="/images/hero1.png"
+            alt="Nia by Neethu — made for the way you feel"
+            fill
+            priority
+            sizes="100vw"
+            className="hero-img hero-img-mobile"
+          />
+          <Image
+            src="/images/hero2.png"
+            alt="Nia by Neethu — made for the way you feel"
+            fill
+            priority
+            sizes="100vw"
+            className="hero-img hero-img-desktop"
+          />
+        </motion.div>
 
         <div className="hero-grain" />
         <motion.div className="hero-copy" style={{ y: heroTextY }}>
