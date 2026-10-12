@@ -9,7 +9,7 @@ const IG = "https://www.instagram.com/nia_by_neethu/";
 
 const images = {
   hero: "./images/hero1.png",
-  texture: "../public/images/bg3.jpg",
+  texture: "./images/texture.png",
 };
 
 const categories = [
@@ -236,15 +236,17 @@ export default function Showcase() {
         <div className="reel-grid">
           {reels.map((reel, index) => (
             <Reveal className={`reel-card reel-card--${index + 1}`} key={reel.number} delay={index * 0.1}>
-              <div className="reel-frame">
-                <video autoPlay={!reduceMotion} muted loop playsInline preload="none" aria-label={`Product film: ${reel.name}`}>
-                  <source src={reel.file} type="video/mp4" />
-                </video>
-                <span className="reel-number">NIA FILM&nbsp; / &nbsp;{reel.number}</span>
-                <span className="reel-watch" aria-hidden="true">
-                  ▶
-                </span>
-              </div>
+              <a href={IG}>
+                <div className="reel-frame">
+                  <video autoPlay={!reduceMotion} muted loop playsInline preload="none" aria-label={`Product film: ${reel.name}`}>
+                    <source src={reel.file} type="video/mp4" />
+                  </video>
+                  <span className="reel-number">NIA FILM&nbsp; / &nbsp;{reel.number}</span>
+                  <span className="reel-watch" aria-hidden="true">
+                    ▶
+                  </span>
+                </div>
+              </a>
               <div className="reel-info">
                 <div className="!text-[#75846B]">
                   <span>{reel.number} / 03</span>
