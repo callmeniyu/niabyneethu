@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Instagram, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Instagram, Menu, X, Loader, Snowflake, ArrowUpFromDot } from "lucide-react";
 
 const DM = "https://ig.me/m/nia_by_neethu";
 const IG = "https://www.instagram.com/nia_by_neethu/";
@@ -93,22 +93,8 @@ export default function Showcase() {
 
       <section className="hero" id="top" ref={heroRef} aria-label="Nia by Neethu — made for the way you feel">
         <motion.div className="hero-image" style={{ y: heroImageY }}>
-          <Image
-            src="/images/hero1.png"
-            alt="Nia by Neethu — made for the way you feel"
-            fill
-            priority
-            sizes="100vw"
-            className="hero-img hero-img-mobile"
-          />
-          <Image
-            src="/images/hero2.png"
-            alt="Nia by Neethu — made for the way you feel"
-            fill
-            priority
-            sizes="100vw"
-            className="hero-img hero-img-desktop"
-          />
+          <Image src="/images/hero1.png" alt="Nia by Neethu — made for the way you feel" fill priority sizes="100vw" className="hero-img hero-img-mobile" />
+          <Image src="/images/hero2.png" alt="Nia by Neethu — made for the way you feel" fill priority sizes="100vw" className="hero-img hero-img-desktop" />
         </motion.div>
 
         <div className="hero-grain" />
@@ -308,7 +294,9 @@ export default function Showcase() {
         <div className="little-things-grid">
           <Reveal className="little-thing">
             <span className="little-number">01</span>
-            <span className="little-symbol">◌</span>
+            <span className="little-symbol">
+              <Loader />
+            </span>
             <h3>
               Comfort,
               <br />
@@ -318,7 +306,9 @@ export default function Showcase() {
           </Reveal>
           <Reveal className="little-thing" delay={0.12}>
             <span className="little-number">02</span>
-            <span className="little-symbol">✳</span>
+            <span className="little-symbol">
+              <Snowflake />
+            </span>
             <h3>
               Details that
               <br />
@@ -328,7 +318,9 @@ export default function Showcase() {
           </Reveal>
           <Reveal className="little-thing" delay={0.24}>
             <span className="little-number">03</span>
-            <span className="little-symbol">↗</span>
+            <span className="little-symbol">
+              <ArrowUpFromDot />
+            </span>
             <h3>
               Here when
               <br />
