@@ -222,7 +222,7 @@ export default function Showcase() {
         <div className="watch-heading">
           <div>
             <SectionLabel>From the Nia feed</SectionLabel>
-            <h2>
+            <h2 className="!text-[#BD7563]">
               Watch it move.
               <br />
               <em>Make it yours.</em>
