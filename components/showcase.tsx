@@ -381,9 +381,9 @@ export default function Showcase() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Nia by Neethu</span>
-          <a href="https://wa.me/919745676150" target="_blank" rel="noreferrer">
+          {/* <a href="https://wa.me/919745676150" target="_blank" rel="noreferrer">
             Made by <span className="underline">niyasmohammed</span>
-          </a>
+          </a> */}
           <span>Made for the way you feel.</span>
         </div>
       </footer>
