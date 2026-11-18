@@ -1,28 +1,25 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Instagram, Menu, X, Loader, Snowflake, ArrowUpFromDot } from "lucide-react";
+import LazyVideo from "@/components/lazy-video";
+import { MEDIA_IMAGES, MEDIA_VIDEOS } from "@/lib/media";
 
 const DM = "https://ig.me/m/nia_by_neethu";
 const IG = "https://www.instagram.com/nia_by_neethu/";
 
-const images = {
-  hero: "./images/hero1.png",
-  texture: "./images/texture.png",
-};
-
 const categories = [
-  { number: "01", name: "Sarees", note: "A little tradition, all your own.", image: "/images/saree1.jpg", shape: "category-card--tall" },
-  { number: "02", name: "Kurtis", note: "The everyday, made a little special.", image: "/images/kurti1.jpg", shape: "category-card--short" },
-  { number: "03", name: "Tops & sets", note: "Easy pieces. Your kind of plans.", image: "/images/top2.jpg", shape: "category-card--offset" },
+  { number: "01", name: "Sarees", note: "A little tradition, all your own.", image: MEDIA_IMAGES.saree, shape: "category-card--tall" },
+  { number: "02", name: "Kurtis", note: "The everyday, made a little special.", image: MEDIA_IMAGES.kurti, shape: "category-card--short" },
+  { number: "03", name: "Tops & sets", note: "Easy pieces. Your kind of plans.", image: MEDIA_IMAGES.topsAndSets, shape: "category-card--offset" },
 ];
 
 const reels = [
-  { number: "01", name: "The Sunday drape", file: "/videos/video1.mp4" },
-  { number: "02", name: "A little colour", file: "/videos/video2.mp4" },
-  { number: "03", name: "Made to move", file: "/videos/video4.mp4" },
+  { number: "01", name: "The Sunday drape", file: MEDIA_VIDEOS.video1 },
+  { number: "02", name: "A little colour", file: MEDIA_VIDEOS.video2 },
+  { number: "03", name: "Made to move", file: MEDIA_VIDEOS.video4 },
 ];
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -51,6 +48,19 @@ export default function Showcase() {
   const heroImageY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const heroTextY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const closeMenu = () => setMenuOpen(false);
+
+  const heroImageCommon = {
+    alt: "Nia by Neethu — made for the way you feel",
+    fill: true,
+    sizes: "100vw",
+    priority: true,
+    fetchPriority: "high" as const,
+    className: "hero-img",
+  };
+  const {
+    props: { srcSet: mobileHeroSrcSet, sizes: mobileHeroSizes },
+  } = getImageProps({ ...heroImageCommon, src: MEDIA_IMAGES.heroMobile });
+  const { props: desktopHeroProps } = getImageProps({ ...heroImageCommon, src: MEDIA_IMAGES.heroDesktop });
 
   return (
     <main>
@@ -93,8 +103,10 @@ export default function Showcase() {
 
       <section className="hero" id="top" ref={heroRef} aria-label="Nia by Neethu — made for the way you feel">
         <motion.div className="hero-image" style={{ y: heroImageY }}>
-          <Image src="/images/hero1.png" alt="Nia by Neethu — made for the way you feel" fill priority sizes="100vw" className="hero-img hero-img-mobile" />
-          <Image src="/images/hero2.png" alt="Nia by Neethu — made for the way you feel" fill priority sizes="100vw" className="hero-img hero-img-desktop" />
+          <picture className="hero-picture">
+            <source media="(max-width: 640px)" srcSet={mobileHeroSrcSet} sizes={mobileHeroSizes} />
+            <img {...desktopHeroProps} />
+          </picture>
         </motion.div>
 
         <div className="hero-grain" />
@@ -160,9 +172,7 @@ export default function Showcase() {
       </section>
 
       <section className="film-section" aria-label="A moving portrait of Nia by Neethu">
-        <video className="film-video" autoPlay={!reduceMotion} muted loop playsInline preload="metadata" aria-label="A woman in a traditional saree">
-          <source src="/videos/bg_video.mp4" type="video/mp4" />
-        </video>
+        <LazyVideo src={MEDIA_VIDEOS.background} className="film-video" autoPlay={!reduceMotion} ariaLabel="A woman in a traditional saree" />
         <div className="film-overlay" />
         <Reveal className="film-caption">
           <span>Little things, lovely things</span>
@@ -195,7 +205,7 @@ export default function Showcase() {
             <Reveal key={category.name} className={`category-card ${category.shape}`} delay={index * 0.1}>
               <a href={DM} target="_blank" rel="noreferrer" aria-label={`Ask about ${category.name} in Instagram direct messages`}>
                 <div className="category-image-wrap">
-                  <img src={category.image} alt={`${category.name} from the Nia by Neethu collection`} loading="lazy" />
+                  <Image src={category.image} alt={`${category.name} from the Nia by Neethu collection`} fill sizes="(max-width: 640px) 50vw, 33vw" loading="lazy" />
                   <span className="category-arrow">
                     <ArrowDownRight size={20} />
                   </span>
@@ -241,9 +251,7 @@ export default function Showcase() {
             <Reveal className={`reel-card reel-card--${index + 1}`} key={reel.number} delay={index * 0.1}>
               <a href={IG}>
                 <div className="reel-frame">
-                  <video autoPlay={!reduceMotion} muted loop playsInline preload="none" aria-label={`Product film: ${reel.name}`}>
-                    <source src={reel.file} type="video/mp4" />
-                  </video>
+                  <LazyVideo src={reel.file} autoPlay={!reduceMotion} ariaLabel={`Product film: ${reel.name}`} />
                   <span className="reel-number">NIA FILM&nbsp; / &nbsp;{reel.number}</span>
                   <span className="reel-watch" aria-hidden="true">
                     ▶
@@ -267,7 +275,7 @@ export default function Showcase() {
 
       <section className="quote-section" id="notes">
         <div className="quote-photo">
-          <img src={images.texture} alt="A quiet detail from the textures and tones that inspire Nia" loading="lazy" />
+          <Image src={MEDIA_IMAGES.texture} alt="A quiet detail from the textures and tones that inspire Nia" width={3024} height={4032} sizes="(max-width: 640px) 100vw, 50vw" loading="lazy" />
           <span className="photo-caption">Little details, kept close.</span>
         </div>
         <Reveal className="quote-copy">
@@ -340,7 +348,7 @@ export default function Showcase() {
 
       <section className="closing-section" id="find-us">
         <div className="closing-image">
-          <img src={images.hero} alt="Nia by Neethu — Indian clothing inspired by Kerala" loading="lazy" />
+          <Image src={MEDIA_IMAGES.heroMobile} alt="Nia by Neethu — Indian clothing inspired by Kerala" fill sizes="(max-width: 640px) 85vw, 45vw" loading="lazy" />
           <div className="closing-image-note">
             A little bit of here,
             <br />

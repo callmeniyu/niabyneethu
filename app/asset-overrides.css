@@ -27,15 +27,14 @@ main {
 .site-footer {
   order: 9;
 }
+.hero-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .hero-img {
   object-fit: cover;
   object-position: center 25%;
-}
-.hero-img-mobile {
-  display: none !important;
-}
-.hero-img-desktop {
-  display: block !important;
 }
 
 .watch-section {
@@ -195,12 +194,6 @@ section[class*="feed"] *,
   }
 }
 @media (max-width: 640px) {
-  .hero-img-mobile {
-    display: block !important;
-  }
-  .hero-img-desktop {
-    display: none !important;
-  }
   .hero-img {
     object-position: 56% center;
   }
